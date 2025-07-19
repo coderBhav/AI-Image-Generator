@@ -38,6 +38,8 @@ body{
 }
 .theme-toggle:hover{
     cursor: pointer;
+    transform: translateY(-1px);
+    transition: transform 0.2s ease;
 }
 .logo-wrapper{
     display: flex;
@@ -72,6 +74,11 @@ h1{
     background-color: rgb(228, 223, 223);
     color: rgb(51, 49, 49);
 }
+.prompt-input:focus{
+  outline: none;
+  box-shadow: 0 2px 8px rgba(121, 116, 116, 0.3);
+}
+
 .prompt-btn{
     position: absolute;
     background-color: rgb(224, 48, 48);
@@ -85,6 +92,8 @@ h1{
 }
 .prompt-btn:hover{
     cursor: pointer;
+    transform: translateY(-1px);
+    transition: transform 0.2s ease;
 }
 .prompt-actions{
     margin-top: 1rem;
@@ -114,6 +123,7 @@ h1{
 .generate-btn:hover{
     cursor: pointer;
     transform: translateY(-1px);
+    transition: transform 0.2s ease;
 }
 @media (max-width: 768px){
     .prompt-actions{
@@ -170,7 +180,7 @@ h1{
     border-radius: 50%;
     border: none;
     background-color: rgb(255,255,255,0.25);
-    backdrop-filter: 5px;
+    backdrop-filter: blur(5px);
 }
 .img-download-btn i{
     color: white;
@@ -193,12 +203,15 @@ h1{
   border: 5px solid #ccc;
   border-top: 4px solid #4f46e5;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+
   margin-bottom: 1rem;
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+.spin{
+    animation: spin 1s linear infinite;
+}
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
 }
