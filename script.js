@@ -1,5 +1,11 @@
 const promptBtn=document.querySelector(".prompt-btn");
+const promptForm=document.querySelector(".prompt-form");
+const modelSelect=document.getElementById("model-select");
+const imageSelect=document.getElementById("image-select");
+const ratioSelect=document.getElementById("ratio-select");
+const gridGallery=document.querySelector(".gallery-grid");
 const promptInput=document.querySelector(".prompt-input");
+const themeToggle=document.querySelector(".theme-toggle");
 const examplePrompts = [
   "A magic forest with glowing plants and fairy homes among giant mushrooms",
   "An old steampunk airship floating through golden clouds at sunset",
@@ -22,3 +28,37 @@ promptBtn.addEventListener("click",()=>{
     promptInput.value=prompt;
     promptInput.focus();
 });
+themeToggle.addEventListener("click",()=>{
+  const icon = document.querySelector('.theme-toggle i');
+  if (document.body.classList.contains('dark-mode')) {
+    icon.classList.add('fa-moon');
+    icon.classList.remove('fa-sun');
+    document.body.classList.remove('dark-mode');
+  } else {
+    icon.classList.add('fa-sun');
+    icon.classList.remove('fa-moon');
+    document.body.classList.add('dark-mode');
+  }
+});
+const createImageCards = (selectModel,imageCount,aspectRatio,promptText)=>{
+  gridGallery.innerHTML="";
+  for(let i=0;i<imageCount;i++){
+    gridGallery.innerHTML+=`<div class="img-card" id="img-card-${i}" style="aspect-ratio: ${aspectRatio}">
+                        <div class="img-loader" id="loader">
+                            <div class="spinner"></div>
+                                <p>Generating...</p>
+                        </div>
+                        <img src="download.jfif" class="result-img"/>
+                    </div>`;
+  }
+}
+const handleFormSubmit = (e)=>{
+  e.preventDefault();
+  const selectModel=modelSelect.value;
+  const imageCount=parseInt(imageSelect.value) || 1;
+  const aspectRatio=ratioSelect.value || "1/1";
+  const promptText=promptInput.value.trim();
+
+  createImageCards(selectModel,imageCount,aspectRatio,promptText);
+}
+promptForm.addEventListener("submit",handleFormSubmit);

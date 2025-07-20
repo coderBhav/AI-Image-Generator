@@ -106,7 +106,13 @@ h1{
     border: none;
     padding: 0.5rem;
     border-radius: 7px;
-    font-size: 0.8rem;    
+    font-size: 0.8rem;   
+    color: rgb(51, 49, 49); 
+    cursor: pointer;
+}
+.custom-select:focus{
+    outline: none;
+    box-shadow: 0 2px 8px rgba(121, 116, 116, 0.3);
 }
 .generate-btn{
     background-color: rgb(224, 48, 48);
@@ -151,8 +157,11 @@ h1{
 .gallery-grid{
     display: grid;
     gap: 15px;
-    margin-top: 1rem;
-    grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
+    margin-top: 1.5rem;
+    grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+}
+.gallery-grid:has(.img-card){
+    margin-top: 1.5rem;
 }
 .img-card{
     position: relative;
@@ -198,8 +207,8 @@ h1{
 }
 
 .spinner {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border: 5px solid #ccc;
   border-top: 4px solid #4f46e5;
   border-radius: 50%;
@@ -214,4 +223,39 @@ h1{
     to{
         transform:rotate(360deg);
     }
+}
+
+body.dark-mode {
+  background: linear-gradient(to right, #1f1f1f, #2e2e2e);
+  color: #f0f0f0;
+}
+
+body.dark-mode .container {
+  background-color: #333;
+  box-shadow: 0 -4px 3px orange;
+}
+
+body.dark-mode .prompt-input,
+body.dark-mode .custom-select {
+  background-color: #555;
+  color: white;
+}
+
+body.dark-mode .generate-btn,
+body.dark-mode .prompt-btn {
+  background-color: rgb(224, 48, 48);
+  color: white;
+}
+
+body.dark-mode .img-loader {
+  background-color: #444;
+  color: white;
+}
+
+body.dark-mode .theme-toggle {
+  background-color: #555;
+}
+
+body.dark-mode .theme-toggle i {
+  color: #fcd34d;
 }
